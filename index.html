@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="estilo.css">
+
+</head>
+
+<body>
+
+  <main class="text-light">
+
+    <!-- FORMULARIO -->
+
+    <h1>CONTACTANOS</h1>
+
+    <form id="form" action="">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" required>
+
+      <br><br>
+
+
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" required>
+
+      <br><br>
+
+
+      <label for="message">Mensaje</label>
+      <br>
+      <textarea name="message" id="message" rows="10" cols="30" required></textarea>
+
+      <br><br>
+
+      <button type="submit">enviar</button>
+
+    </form>
+    <a href="mailto:info@embalajelaseguridad.com.ar" id="mes" class="oculto">mail</a>
+    <a href="mailto:info@embalajelaseguridad.com.ar" id="mes" class="oculto">mail</a>
+  </main>
+
+  <script>
+    const $form = document.querySelector("#form")
+    const $buttonMailto = document.querySelector("#mes")
+
+    $form.addEventListener("submit", handleSubmit)
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        const form = new FormData(this)     
+        $buttonMailto.setAttribute("href", `mailto:info@embalajelaseguridad.com.ar?subject=Nombre: ${form.get("name")}     Correo: ${form.get("email")}&body=${form.get("message")}`)
+        $buttonMailto.click()
+    }
+  </script>
+
+</body>
+
+</html>
